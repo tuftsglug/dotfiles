@@ -1,0 +1,60 @@
+#!/bin/bash
+get_watts(){
+    if [ -f /sys/class/power_supply/BAT0/power_now ] && [ $(cat /sys/class/power_supply/BAT0/power_now) -gt 0 ]
+    then
+    w=$(cat /sys/class/power_supply/BAT0/power_now)
+    elif [ -f /sys/class/power_supply/BAT1/power_now ] && [ $(cat /sys/class/power_supply/BAT1/power_now) -gt 0 ]
+    then
+    w=$(cat /sys/class/power_supply/BAT1/power_now)
+    elif [ -f /sys/class/power_supply/BAT0/voltage_now ] && [ -f /sys/class/power_supply/BAT0/current_now ]; then
+    V=$(cat /sys/class/power_supply/BAT0/voltage_now)
+    A=$(cat /sys/class/power_supply/BAT0/current_now)
+    w=$(echo "100000000 * $A / $V" | bc)i
+    else
+        w=0
+    fi
+}
+
+print_watts_verbose(){
+    if [ $w -lt 1000000 ]; then
+        echo "Power consumption unavaliable on AC";
+    else
+        echo -n "Power consumption: "
+        echo -n $(echo "scale=2; $w/1000000" | bc)
+        echo " Watts"
+    fi
+}
+
+print_watts_terse(){
+    if [ $w -lt 1000000 ]; then
+        echo -n "--.--"
+    else
+        echo -n $(echo "scale=2; $w/1000000" | bc)
+    fi
+    echo " W"
+}
+
+print_awesome(){
+    export DISPLAY=:0.0
+    if [ $w -lt 1000000 ]; then
+        echo -e 'wattwidget.text = ""' | awesome-client
+    else
+        echo -e "wattwidget.text = \" `echo "scale=1; $w/1000000" | bc`W\"" | awesome-client
+    fi
+}
+
+
+if [ "$1" == "a" ]; then
+    get_watts; print_awesome; sleep 15;
+    get_watts; print_awesome; sleep 15;
+    get_watts; print_awesome; sleep 15;
+    get_watts; print_awesome;
+else
+    get_watts
+    case "$1" in
+        n ) print_watts_terse;;
+        * ) print_watts_verbose;;
+    esac
+fi
+
+

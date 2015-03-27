@@ -1,0 +1,48 @@
+#!/bin/bash
+#steps of 5; goes up to u.
+if  [ ! -z "$2" ]; then
+PERC="$(df -h | grep $1 | head -n $2 | tail -n1 | egrep -o '[[:digit:]]*%' | sed 's/%//')"
+else
+PERC="$(df -h | grep $1 | egrep -o '[[:digit:]]*%' | sed 's/%//')"
+fi
+if [ $PERC -gt 0 ] && [ $PERC -le 5 ]; then
+echo "a"
+elif [ $PERC -ge 6 ] && [ $PERC -le 10 ]; then
+echo "b"
+elif [ $PERC -ge 11 ] && [ $PERC -le 15 ]; then
+echo "c"
+elif [ $PERC -ge 16 ] && [ $PERC -le 20 ]; then
+echo "e"
+elif [ $PERC -ge 21 ] && [ $PERC -le 25 ]; then
+echo "f"
+elif [ $PERC -ge 26 ] && [ $PERC -le 30 ]; then
+echo "g"
+elif [ $PERC -ge 31 ] && [ $PERC -le 35 ]; then
+echo "h"
+elif [ $PERC -ge 36 ] && [ $PERC -le 40 ]; then
+echo "i"
+elif [ $PERC -ge 41 ] && [ $PERC -le 45 ]; then
+echo "j"
+elif [ $PERC -ge 46 ] && [ $PERC -le 50 ]; then
+echo "k"
+elif [ $PERC -ge 51 ] && [ $PERC -le 55 ]; then
+echo "l"
+elif [ $PERC -ge 56 ] && [ $PERC -le 60 ]; then
+echo "m"
+elif [ $PERC -ge 61 ] && [ $PERC -le 65 ]; then
+echo "n"
+elif [ $PERC -ge 66 ] && [ $PERC -le 70 ]; then
+echo "o"
+elif [ $PERC -ge 71 ] && [ $PERC -le 75 ]; then
+echo "p"
+elif [ $PERC -ge 76 ] && [ $PERC -le 80 ]; then
+echo "q"
+elif [ $PERC -ge 81 ] && [ $PERC -le 85 ]; then
+echo "r"
+elif [ $PERC -ge 86 ] && [ $PERC -le 90 ]; then
+echo "s"
+elif [ $PERC -ge 91 ] && [ $PERC -le 95 ]; then
+echo "t"
+elif [ $PERC -ge 96 ] && [ $PERC -le 100 ]; then
+echo "u"
+fi

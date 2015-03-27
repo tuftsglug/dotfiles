@@ -1,0 +1,3 @@
+[submodule "rschlaikjer/awesome-config"]
+	path = rschlaikjer/awesome-config
+	url = https://github.com/rschlaikjer/awesome-config
