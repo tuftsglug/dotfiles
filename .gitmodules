@@ -1,3 +1,21 @@
 [submodule "rschlaikjer/awesome-config"]
 	path = rschlaikjer/awesome-config
 	url = https://github.com/rschlaikjer/awesome-config
+[submodule "rschlaikjer/VIM/.vim/bundle/vim-powerline"]
+	path = rschlaikjer/VIM/.vim/bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule "rschlaikjer/VIM/.vim/bundle/vim-go"]
+	path = rschlaikjer/VIM/.vim/bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule "rschlaikjer/VIM/.vim/bundle/vim-arduino"]
+	path = rschlaikjer/VIM/.vim/bundle/vim-arduino
+	url = https://github.com/tclem/vim-arduino.git
+[submodule "rschlaikjer/VIM/.vim/bundle/tagbar"]
+	path = rschlaikjer/VIM/.vim/bundle/tagbar
+	url = git://github.com/majutsushi/tagbar
+[submodule "rschlaikjer/VIM/.vim/bundle/syntastic"]
+	path = rschlaikjer/VIM/.vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "rschlaikjer/VIM/.vim/bundle/nerdtree"]
+	path = rschlaikjer/VIM/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
